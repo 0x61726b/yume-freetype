@@ -74,11 +74,8 @@ set (SOURCE_FILES
     src/winfonts/winfnt.c)
 
 # Define dependency libs
-set (INCLUDE_DIRS include)
+set(FREETYPE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Setup target
-setup_library ()
-
-# Install headers for building the Urho3D library
-install_header_files (DIRECTORY include/freetype DESTINATION ${DEST_INCLUDE_DIR}/ThirdParty FILES_MATCHING PATTERN *.h BUILD_TREE_ONLY)
-install_header_files (FILES include/ft2build.h DESTINATION ${DEST_INCLUDE_DIR}/ThirdParty FILES_MATCHING PATTERN *.h BUILD_TREE_ONLY)
+add_library(FreeType ${SOURCE_FILES})
